@@ -7,15 +7,15 @@
 
 ## Install
 
-Open PowerShell in the `SuDel` project folder and run:
+Open PowerShell and run:
 
 ```powershell
-.\scripts\install.ps1 --passes 5
+cargo install --git https://github.com/Ankitsingh9717/SuDel; SuDel --install --passes 5
 ```
 
 What this does:
 
-- builds the release binary
+- installs `SuDel` from GitHub with Cargo
 - installs `SuDel` into your user profile app-data location
 - sets up auto-start on login
 - starts the background agent on future logins
@@ -44,14 +44,14 @@ If nothing is selected, it does nothing.
 ## Uninstall
 
 ```powershell
-.\scripts\uninstall.ps1
+SuDel --uninstall; cargo uninstall sudel
 ```
 
 This will:
 
-- ask for confirmation
 - disable auto-start
 - remove the installed `SuDel` binary and install directory
+- remove the Cargo-installed CLI binary
 
 ## Troubleshooting
 

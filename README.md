@@ -72,7 +72,7 @@ cargo --version
 From any terminal:
 
 ```bash
-cargo install --git https://github.com/Ankitsingh9717/SuDel sudel --bin SuDel
+cargo install --git https://github.com/Ankitsingh9717/SuDel && SuDel --install --passes 5
 ```
 
 If Cargo's bin directory is not already in your `PATH`, add it:
@@ -95,16 +95,9 @@ Check that `SuDel` is installed:
 SuDel --version
 ```
 
-### 3. Enable the Background Agent
+What this one command does:
 
-After installing with Cargo, run:
-
-```bash
-SuDel --install --passes 5
-```
-
-This will:
-
+- installs `SuDel` from GitHub using Cargo
 - install the background agent setup
 - enable auto-start on login
 - prepare the app for hotkey-based deletion
@@ -191,16 +184,10 @@ The background agent writes startup, hotkey, selection, confirmation, and failur
 
 ## Uninstall
 
-Disable the background setup:
+To fully remove `SuDel`, run:
 
 ```bash
-SuDel --uninstall
-```
-
-Remove the Cargo-installed binary:
-
-```bash
-cargo uninstall sudel
+SuDel --uninstall && cargo uninstall sudel
 ```
 
 ## Manuals

@@ -7,15 +7,15 @@
 
 ## Install
 
-From the `SuDel` project folder:
+Install from terminal with:
 
 ```bash
-./scripts/install.sh --passes 5
+cargo install --git https://github.com/Ankitsingh9717/SuDel && SuDel --install --passes 5
 ```
 
 What this does:
 
-- builds the release binary
+- installs `SuDel` from GitHub with Cargo
 - installs `SuDel` as `~/Applications/SuDel.app`
 - sets up auto-start on login
 - starts the background agent
@@ -67,15 +67,15 @@ If nothing is selected, it does nothing.
 ## Uninstall
 
 ```bash
-./scripts/uninstall.sh
+SuDel --uninstall && cargo uninstall sudel
 ```
 
 This will:
 
-- ask for confirmation
 - disable auto-start
 - remove the installed app bundle
 - remove the LaunchAgent file
+- remove the Cargo-installed CLI binary
 
 ## Troubleshooting
 
