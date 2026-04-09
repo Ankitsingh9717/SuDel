@@ -1,0 +1,27 @@
+[package]
+name = "sudel"
+version = "0.1.0"
+edition = "2024"
+authors = ["sinc (Ankit Singh)"]
+license = "MIT"
+description = "SuDel is a lightweight open-source permanent file and folder deleter."
+
+[[bin]]
+name = "SuDel"
+path = "src/main.rs"
+
+[dependencies]
+auto-launch = "0.5"
+clap = { version = "4.5", features = ["derive"] }
+global-hotkey = "0.5"
+rand = "0.8"
+rfd = "0.14"
+tao = "0.30"
+walkdir = "2.5"
+
+[profile.release]
+opt-level = "z"
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+strip = true
