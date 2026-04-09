@@ -1,6 +1,7 @@
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
+#[cfg(target_os = "macos")]
 use std::process::Command;
 
 use auto_launch::AutoLaunchBuilder;
@@ -99,13 +100,13 @@ fn installed_binary_path(current: &Path) -> Result<PathBuf, DynError> {
     }
 }
 
-fn post_install_platform_setup(destination: &Path, quiet: bool) -> Result<(), DynError> {
+fn post_install_platform_setup(_destination: &Path, _quiet: bool) -> Result<(), DynError> {
     #[cfg(target_os = "macos")]
     {
-        ensure_macos_app_bundle(destination)?;
+        ensure_macos_app_bundle(_destination)?;
         ensure_launch_agent_keepalive()?;
         kickstart_launch_agent()?;
-        open_full_disk_access_guidance(destination, quiet);
+        open_full_disk_access_guidance(_destination, _quiet);
     }
 
     Ok(())
@@ -123,7 +124,7 @@ fn remove_installed_artifacts(_current: &Path, destination: &Path) -> Result<(),
 
     #[cfg(target_os = "windows")]
     {
-        if destination.exists() && current != destination {
+        if destination.exists() && _current != destination {
             fs::remove_file(destination)?;
         }
         if let Some(parent) = destination.parent() {
@@ -134,7 +135,7 @@ fn remove_installed_artifacts(_current: &Path, destination: &Path) -> Result<(),
 
     #[cfg(not(any(target_os = "macos", target_os = "windows")))]
     {
-        if destination.exists() && current != destination {
+        if destination.exists() && _current != destination {
             fs::remove_file(destination)?;
         }
         Ok(())

@@ -99,7 +99,7 @@ pub fn run_agent(mut options: ShredOptions) -> Result<(), DynError> {
 }
 
 fn hotkeys_for_platform() -> Vec<HotKey> {
-    let mut hotkeys = vec![HotKey::new(
+    let hotkeys = vec![HotKey::new(
         Some(Modifiers::SHIFT | Modifiers::ALT),
         Code::Delete,
     )];
