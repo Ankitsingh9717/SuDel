@@ -69,10 +69,30 @@ cargo --version
 
 ### 2. Install SuDel with Cargo
 
-From any terminal:
+### For non-technical Windows users
+
+Download `SuDel-windows.zip` from GitHub Releases, extract it, then run:
+
+```text
+install.bat
+```
+
+This is the easiest Windows install path for users who do not want to work with Cargo commands directly. The prebuilt release package includes `SuDel.exe`, so users normally do not need Rust, Cargo, or Visual Studio.
+
+### For technical users
+
+macOS and Linux:
 
 ```bash
 cargo install --git https://github.com/Ankitsingh9717/SuDel && SuDel --install --passes 5
+```
+
+Windows PowerShell:
+
+```powershell
+rustup default stable-x86_64-pc-windows-msvc
+cargo install --git https://github.com/Ankitsingh9717/SuDel
+SuDel --install --passes 5
 ```
 
 If Cargo's bin directory is not already in your `PATH`, add it:
@@ -133,6 +153,10 @@ If Windows Security or SmartScreen prompts you, allow `SuDel`.
 
 No extra permission panel is usually needed beyond normal approval and startup access.
 
+If install fails with `link.exe not found`, install Visual Studio Build Tools 2022 or Visual Studio Community 2022 with `Desktop development with C++`, reopen PowerShell, and run the install commands again.
+
+For downloadable Windows release packages, GitHub Actions can build `SuDel-windows.zip` automatically on Windows and publish it as a workflow artifact or release asset.
+
 ## Hotkeys
 
 Windows:
@@ -186,11 +210,27 @@ The background agent writes startup, hotkey, selection, confirmation, and failur
 
 To fully remove `SuDel`, run:
 
+macOS and Linux:
+
 ```bash
 SuDel --uninstall && cargo uninstall sudel
+```
+
+Windows PowerShell:
+
+```powershell
+SuDel --uninstall
+cargo uninstall sudel
+```
+
+For non-technical Windows users, you can also run:
+
+```text
+uninstall.bat
 ```
 
 ## Manuals
 
 - [MANUAL_MACOS.md](MANUAL_MACOS.md)
 - [MANUAL_WINDOWS.md](MANUAL_WINDOWS.md)
+- [WINDOWS_QUICKSTART.md](WINDOWS_QUICKSTART.md)

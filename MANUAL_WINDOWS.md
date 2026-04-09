@@ -3,14 +3,32 @@
 ## Requirements
 
 - Windows
-- Rust installed from [rustup.rs](https://rustup.rs) if you are building from source
+- Rust installed from [rustup.rs](https://rustup.rs)
+- Microsoft C++ Build Tools for the Rust MSVC toolchain
+
+Install one of these first:
+
+- Visual Studio Build Tools 2022 with `Desktop development with C++`
+- Visual Studio Community 2022 with `Desktop development with C++`
 
 ## Install
+
+### Easy install for non-technical users
+
+Download `SuDel-windows.zip`, extract it, then double-click:
+
+```text
+install.bat
+```
+
+### Terminal install for technical users
 
 Open PowerShell and run:
 
 ```powershell
-cargo install --git https://github.com/Ankitsingh9717/SuDel; SuDel --install --passes 5
+rustup default stable-x86_64-pc-windows-msvc
+cargo install --git https://github.com/Ankitsingh9717/SuDel
+SuDel --install --passes 5
 ```
 
 What this does:
@@ -43,8 +61,17 @@ If nothing is selected, it does nothing.
 
 ## Uninstall
 
+Easy way:
+
+```text
+uninstall.bat
+```
+
+Terminal way:
+
 ```powershell
-SuDel --uninstall; cargo uninstall sudel
+SuDel --uninstall
+cargo uninstall sudel
 ```
 
 This will:
@@ -61,3 +88,15 @@ If the hotkey does not work:
 - run `SuDel --diagnose`
 - allow the app if Windows Security or SmartScreen prompts
 - make sure File Explorer is the active app when testing selected-item deletion
+
+If install fails with `link.exe not found`:
+
+- install Visual Studio Build Tools or Visual Studio Community with `Desktop development with C++`
+- reopen PowerShell
+- run:
+
+```powershell
+rustup default stable-x86_64-pc-windows-msvc
+cargo install --git https://github.com/Ankitsingh9717/SuDel
+SuDel --install --passes 5
+```
